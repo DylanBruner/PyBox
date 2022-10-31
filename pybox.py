@@ -34,19 +34,15 @@ class Sandbox(object):
         """
         Quick way to switch feature/security presets
         """
-        if mode == 'default':
+        if mode == Security.default or Security.unsafe:
             self.unload_globals_while_running = False
             self.block_imports                = False
             self.block_eval_and_exec          = False
-        elif mode == 'safe':
+        elif mode == Security.safe:
             self.unload_globals_while_running = True
             self.block_imports                = True
             self.block_eval_and_exec          = True
-        elif mode == 'unsafe':
-            self.unload_globals_while_running = False
-            self.block_imports                = False
-            self.block_eval_and_exec          = False
-        elif mode == 'safe_threaded':
+        elif mode == Security.safe_threaded:
             self.unload_globals_while_running = False
             self.block_imports                = True
             self.block_eval_and_exec          = True
